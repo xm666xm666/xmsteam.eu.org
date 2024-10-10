@@ -1,2 +1,5 @@
-# xmsteam.eu.org
-插件网xmsteam.eu.org
+# www.xmsteam.eu.org
+XM插件网
+你在该网站可以使用各种插件！
+
+![README](./picture/README.png)

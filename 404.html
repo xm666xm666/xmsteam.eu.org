@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 Not Found</title>
+  <link rel="shortcut icon" href="ico/cat.ico">
+  <link rel="stylesheet" href="./css/system-time.css">
+  <link rel="stylesheet" href="./css/home-link.css">
+  <style>
+    body {
+      background-color: #ECB1AC;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 4rem;
+      margin-top: 10vh;
+    }
+
+    p {
+      font-size: 1.5rem;
+    }
+
+    .glitch {
+      font-size: 8rem;
+      color: #00ff00;
+      animation: glitch-effect 2s infinite;
+    }
+
+    @keyframes glitch-effect {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      25% {
+        transform: scale(1.1);
+        opacity: 0.8;
+      }
+      50% {
+        transform: scale(0.9);
+        opacity: 0.8;
+      }
+      75% {
+        transform: scale(1.2);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="system-time"></div>
+  <h1>404 Not Found</h1>
+  <p class="glitch">错误Error</p>
+  <p>Error对不起，网页走丢了Error</p>
+</body>
+  <script src="./js/updateTime.js"></script>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>多种进制转换器</title>
+  <link rel="shortcut icon" href="ico/cat.ico">
+  <link rel="stylesheet" href="./css/system-time.css">
+  <link rel="stylesheet" href="./css/home-link.css">
+  <link rel="stylesheet" href="./css/body.css">
+  <link rel="stylesheet" href="./css/back-to-top.css"> <!-- 引入back-to-top.css -->
+  <style>
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input#number {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    select {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .result-box {
+      border: 1px solid #ccc;
+      padding: 5px;
+      margin-top: 10px;
+      font-size: 16px;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .result-box input[type="text"] {
+      flex: 1;
+      border: none;
+      background-color: transparent;
+      font-size: 16px;
+      padding: 5px;
+      outline: none;
+    }
+
+    .result-box button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    .copy-btn {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="back-to-top" class="back-to-top">返回顶部</button>
+  <div class="container">
+    <h1>多种进制转换器</h1>
+    <h1>支持浮点型</h1>
+    <h2>版本v2.0</h2>
+    <label for="number">输入一个数字：</label>
+    <input type="text" id="number" step="any" placeholder="请输入数字" />
+    <label for="from">转换前进制：</label>
+    <select id="from">
+      <option value="2">二进制</option>
+      <option value="3">三进制</option>
+      <option value="4">四进制</option>
+      <option value="5">五进制</option>
+      <option value="6">六进制</option>
+      <option value="7">七进制</option>
+      <option value="8">八进制</option>
+      <option value="9">九进制</option>
+      <option value="10" selected>十进制</option>
+      <option value="11">十一进制</option>
+      <option value="12">十二进制</option>
+      <option value="13">十三进制</option>
+      <option value="14">十四进制</option>
+      <option value="15">十五进制</option>
+      <option value="16">十六进制</option>
+      <option value="17">十七进制</option>
+      <option value="18">十八进制</option>
+      <option value="19">十九进制</option>
+      <option value="20">二十进制</option>
+      <option value="21">二十一进制</option>
+      <option value="22">二十二进制</option>
+      <option value="23">二十三进制</option>
+      <option value="24">二十四进制</option>
+      <option value="25">二十五进制</option>
+      <option value="26">二十六进制</option>
+      <option value="27">二十七进制</option>
+      <option value="28">二十八进制</option>
+      <option value="29">二十九进制</option>
+      <option value="30">三十进制</option>
+      <option value="31">三十一进制</option>
+      <option value="32">三十二进制</option>
+      <option value="33">三十三进制</option>
+      <option value="34">三十四进制</option>
+      <option value="35">三十五进制</option>
+      <option value="36">三十六进制</option>
+    </select>
+    <label for="to">转换后进制：</label>
+    <select id="to">
+      <option value="2" selected>二进制</option>
+      <option value="3">三进制</option>
+      <option value="4">四进制</option>
+      <option value="5">五进制</option>
+      <option value="6">六进制</option>
+      <option value="7">七进制</option>
+      <option value="8">八进制</option>
+      <option value="9">九进制</option>
+      <option value="10">十进制</option>
+      <option value="11">十一进制</option>
+      <option value="12">十二进制</option>
+      <option value="13">十三进制</option>
+      <option value="14">十四进制</option>
+      <option value="15">十五进制</option>
+      <option value="16">十六进制</option>
+      <option value="17">十七进制</option>
+      <option value="18">十八进制</option>
+      <option value="19">十九进制</option>
+      <option value="20">二十进制</option>
+      <option value="21">二十一进制</option>
+      <option value="22">二十二进制</option>
+      <option value="23">二十三进制</option>
+      <option value="24">二十四进制</option>
+      <option value="25">二十五进制</option>
+      <option value="26">二十六进制</option>
+      <option value="27">二十七进制</option>
+      <option value="28">二十八进制</option>
+      <option value="29">二十九进制</option>
+      <option value="30">三十进制</option>
+      <option value="31">三十一进制</option>
+      <option value="32">三十二进制</option>
+      <option value="33">三十三进制</option>
+      <option value="34">三十四进制</option>
+      <option value="35">三十五进制</option>
+      <option value="36">三十六进制</option>
+    </select>
+    <button onclick="convert()">转换</button>
+    <div class="result" id="result">
+      转换结果:
+      <div class="result-box" id="result-box"></div>
+    </div>
+    <div id="system-time"></div>
+  </div>
+  <script>
+    function convert() {
+      var number = document.getElementById('number').value.trim().toUpperCase();
+      var fromBase = parseInt(document.getElementById('from').value);
+      var toBase = parseInt(document.getElementById('to').value);
+
+      if (number === '') {
+        document.getElementById('result-box').innerHTML = '请输入有效数字';
+        return;
+      }
+
+      var decimalNumber = 0;
+      var integerPart = number.split('.')[0];
+      var fractionalPart = number.split('.')[1];
+
+      // 转换整数部分
+      for (var i = 0; i < integerPart.length; i++) {
+        var digit = getDigitValue(integerPart.charAt(i));
+        decimalNumber = decimalNumber * fromBase + digit;
+      }
+
+      // 转换小数部分
+      if (fractionalPart) {
+        var fractionalNumber = 0;
+        var base = 1 / fromBase;
+
+        for (var i = 0; i < fractionalPart.length; i++) {
+          var digit = getDigitValue(fractionalPart.charAt(i));
+          fractionalNumber += digit * base;
+          base /= fromBase;
+        }
+
+        decimalNumber += fractionalNumber;
+      }
+
+      var result = decimalNumber.toString(toBase);
+
+      var prefix = '';
+      if (toBase === 2) {
+        prefix = '0b';
+      } else if (toBase === 8) {
+        prefix = '0o';
+      } else if (toBase === 16) {
+        prefix = '0x';
+      }
+
+      if (toBase <= 10 && result.indexOf('.') !== -1) {
+        var integerPart = result.split('.')[0];
+        var fractionalPart = result.split('.')[1];
+        result = integerPart + '.' + fractionalPart.padEnd(10, '0');
+      }
+
+      document.getElementById('result-box').innerHTML = `
+    <input type="text" value="${result}" readonly>
+    <button onclick="copyResult()">复制</button>
+  `;
+    }
+
+    function copyResult() {
+      var resultBox = document.getElementById('result-box');
+      var resultText = resultBox.querySelector('input').value;
+
+      var tempInput = document.createElement('textarea');
+      tempInput.value = resultText;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+
+      alert('结果已复制到剪贴板');
+    }
+
+    function getDigitValue(digit) {
+      if (digit >= '0' && digit <= '9') {
+        return parseInt(digit);
+      } else {
+        return digit.charCodeAt(0) - 'A'.charCodeAt(0) + 10;
+      }
+    }
+  </script>
+  <a href="./shouye.html" class="home-link">首页</a>
+  <a href="https://xm666.eu.org" class="home-link">XM博客</a>
+  <script src="./js/updateTime.js"></script>
+  <script src="./js/backToTop.js"></script> <!-- 引入返回顶部功能 -->
+</body>
+
+</html>
