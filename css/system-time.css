@@ -1,0 +1,8 @@
+#system-time {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+    color: black; /* 修改为黑色 */
+    font-weight: bold; /* 加粗 */
+}
