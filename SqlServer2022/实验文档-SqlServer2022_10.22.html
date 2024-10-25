@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SqlServer2022_10.22</title>
+  <link rel="shortcut icon" href="../ico/cat.ico">
+  <link rel="stylesheet" href="../css/system-time.css">
+  <link rel="stylesheet" href="../css/home-link.css">
+  <link rel="stylesheet" href="../css/body.css">
+  <link rel="stylesheet" href="../css/back-to-top.css"> <!-- 引入back-to-top.css -->
+  <style>
+    h1 {
+      text-align: center;
+      color: #333333;
+    }
+
+    .image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80vh;
+      margin: 20px 0;
+      width: 100%;
+      position: relative;
+    }
+
+    .image-container img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      cursor: pointer;
+    }
+
+    .zoomed {
+      transform: scale(1.5);
+      transition: transform 0.5s ease;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>实验文档-SqlServer2022_10.22</h1>
+  <div id="gallery"></div>
+  <div id="system-time"></div>
+  <button id="back-to-top" class="back-to-top">返回顶部</button>
+  <script>
+    let zoomedImage = null; // 跟踪当前放大的图片
+
+    const images = [
+      "../picture/SqlServer2022/10.22/SqlServer2022_10.22-1.png",
+        "../picture/SqlServer2022/10.22/SqlServer2022_10.22-2.png",
+        "../picture/SqlServer2022/10.22/SqlServer2022_10.22-3.png",
+        "../picture/SqlServer2022/10.22/SqlServer2022_10.22-4.png",
+        "../picture/SqlServer2022/10.22/SqlServer2022_10.22-5.png",
+        "../picture/SqlServer2022/10.22/SqlServer2022_10.22-6.png",
+        "../picture/SqlServer2022/10.22/SqlServer2022_10.22-7.png",
+        "../picture/SqlServer2022/10.22/SqlServer2022_10.22-8.png",
+        "../picture/SqlServer2022/10.22/SqlServer2022_10.22-9.png",
+        "../picture/SqlServer2022/10.22/SqlServer2022_10.22-10.png",
+        "../picture/SqlServer2022/10.22/SqlServer2022_10.22-11.png",
+        "../picture/SqlServer2022/10.22/SqlServer2022_10.22-12.png",
+        "../picture/SqlServer2022/10.22/SqlServer2022_10.22-13.png"  
+    ];
+
+    const gallery = document.getElementById('gallery');
+
+    images.forEach(src => {
+      const container = document.createElement('div');
+      container.className = 'image-container';
+
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = '图片';
+      img.onclick = (event) => {
+        event.stopPropagation();
+        zoomImage(img);
+      };
+
+      container.appendChild(img);
+      gallery.appendChild(container);
+    });
+
+    function zoomImage(img) {
+      // 如果当前有放大的图片，先恢复它
+      if (zoomedImage && zoomedImage !== img) {
+        zoomedImage.classList.remove('zoomed');
+      }
+
+      img.classList.toggle('zoomed');
+      zoomedImage = img.classList.contains('zoomed') ? img : null;
+
+      if (img.classList.contains('zoomed')) {
+        img.parentNode.onclick = () => {
+          img.classList.remove('zoomed'); // 点击容器关闭缩放
+          zoomedImage = null;
+        };
+      } else {
+        img.parentNode.onclick = null; // 解除点击容器的事件
+      }
+    }
+
+    // 监听页面滚动，自动恢复放大的图片
+    window.onscroll = () => {
+      if (zoomedImage) {
+        zoomedImage.classList.remove('zoomed');
+        zoomedImage = null;
+      }
+    };
+
+    // 在所有图片之后添加链接
+    const homeLink = document.createElement('a');
+    homeLink.href = "../shouye.html";
+    homeLink.className = "home-link";
+    homeLink.textContent = "首页";
+
+    const blogLink = document.createElement('a');
+    blogLink.href = "https://xm666.eu.org";
+    blogLink.className = "home-link";
+    blogLink.textContent = "XM博客";
+
+    gallery.appendChild(homeLink);
+    gallery.appendChild(blogLink);
+
+    const backToTopButton = document.getElementById('back-to-top');
+  </script>
+  <script src="../js/updateTime.js"></script>
+  <script src="../js/backToTop.js"></script> <!-- 引入返回顶部功能 -->
+</body>
+
+</html>
