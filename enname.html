@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>随机英文名称生成器</title>
+  <link rel="shortcut icon" href="ico/cat.ico">
+  <link rel="stylesheet" href="./css/system-time.css">
+  <link rel="stylesheet" href="./css/home-link.css">
+  <link rel="stylesheet" href="./css/back-to-top.css"> <!-- 引入back-to-top.css -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #ECB1AC;
+      margin-top: 20vh;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    p {
+      font-size: 18px;
+      color: #666;
+      margin-top: 20px;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: background-color 0.3s ease;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+    .name-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f8ccc8;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-top: 40px;
+    }
+    .name-container span {
+      font-size: 24px;
+      color: #333;
+      margin-right: 10px;
+    }
+    .name {
+      font-size: 3rem;
+      color: #333;
+      margin-bottom: 2rem;
+    }
+
+    .generate-button {
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .generate-button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+  <button id="back-to-top" class="back-to-top">返回顶部</button>
+    <h1>随机生成英文名</h1>
+    <h2>版本v1.2</h2>
+    <div class="name-container">
+        <span id="firstName"></span><span id="lastName"></span>
+    </div>
+    <div id="system-time"></div>
+    <button onclick="generateRandomName()">重新获取</button>
+
+    <script src="./js/enname.js"></script>
+    <script src="./js/updateTime.js"></script>
+    <script src="./js/backToTop.js"></script> <!-- 引入返回顶部功能 -->
+    <a href="./shouye.html" class="home-link">首页</a>
+    <a href="https://xm666.eu.org" class="home-link">XM博客</a>
+</body>
+</html>

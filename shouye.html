@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XM的插件网</title>
+    <link rel="shortcut icon" href="ico/cat.ico">
+    <link rel="stylesheet" href="./css/system-time.css">
+    <link rel="stylesheet" href="./css/body.css">
+    <link rel="stylesheet" href="./css/back-to-top.css"> <!-- 引入back-to-top.css -->
+    <style>
+        .welcome-section {
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        h1 {
+            font-size: 48px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            font-size: 24px;
+            color: #777;
+            margin-bottom: 40px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 20px;
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            margin: 10px; /* 增加按钮之间的间隔 */
+        }
+        
+        .cta-button:hover {
+            background-color: #0056b3;
+        }
+
+        .home-link {
+            text-decoration: none;
+            font-size: 25px;
+            color: #fff;
+            background-color: #007bff;
+            padding: 8px 10px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            display: block;
+            text-align: center;
+            margin: 20px 0; /* 上下间隔保持 */
+        }
+
+        .home-link:hover {
+            background-color: #0056b3;
+        }
+
+        /* 仅在较小的屏幕上应用网格布局 */
+        @media (max-width: 768px) {
+            .welcome-section {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr); /* 每行两个按钮 */
+                gap: 20px;
+                justify-items: center;
+            }
+
+            .cta-button, .home-link {
+                width: 100%; /* 让按钮在网格布局中填满可用空间 */
+            }
+
+            h1, p {
+                grid-column: span 2; /* 在网格布局中，标题和描述仍占满两列 */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .welcome-section {
+                grid-template-columns: 1fr; /* 更小屏幕上，每行一个按钮 */
+            }
+
+            h1, p {
+                grid-column: span 1; /* 重新占据一整行 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <button id="back-to-top" class="back-to-top">返回顶部</button>
+    <div class="welcome-section">
+        <h1>欢迎来到XM的插件网</h1>
+        <p>发现一个充满可能性的世界！</p>
+        <a href="./index.html" class="cta-button">免责声明</a>
+        <a href="./time.html" class="cta-button">世界时间</a>
+        <a href="./enname.html" class="cta-button">随机英文名称生成器</a>
+        <a href="./jinzhizhuanhuan.html" class="cta-button">多种进制转换</a>
+        <a href="./download.html" class="cta-button">XM软件</a>
+        <a href="./SqlServer2022.html" class="cta-button">SqlServer2022</a>
+        <a href="./office/office_download.html" class="cta-button">高级Office作业</a>
+        <a href="https://www.xmsteam.eu.org/shouye.html" class="home-link">首页</a>
+        <a href="https://xm666.eu.org" class="home-link">XM博客</a>
+        <div id="system-time"></div>
+    </div>
+    <script src="./js/updateTime.js"></script>
+    <script src="./js/backToTop.js"></script> <!-- 引入返回顶部功能 -->
+</body>
+</html>

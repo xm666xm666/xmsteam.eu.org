@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>世界时间展示</title>
+  <link rel="shortcut icon" href="ico/cat.ico">
+  <link rel="stylesheet" href="./css/system-time.css">
+  <link rel="stylesheet" href="./css/home-link.css">
+  <link rel="stylesheet" href="./css/body.css">
+  <link rel="stylesheet" href="./css/back-to-top.css"> <!-- 引入back-to-top.css -->
+  <style>
+    h1 {
+      text-align: center;
+      color: #333333;
+    }
+
+    .city-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+    }
+
+    .city {
+      text-align: center;
+      margin: 0 20px;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .city-name {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .city-time {
+      font-size: 48px;
+      font-weight: bold;
+      color: #333333;
+    }
+
+    .clock-icon {
+      font-size: 60px;
+      color: #333333;
+      animation: rotate 1s infinite linear;
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    #system-time {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      font-size: 18px;
+      color: black; /* 修改为黑色 */
+      font-weight: bold; /* 加粗 */
+    } 
+  </style>
+</head>
+<body>
+  <button id="back-to-top" class="back-to-top">返回顶部</button>
+  <h1>世界时间展示</h1>
+
+  <div class="city-container">
+    <div class="city">
+      <div class="city-name">北京</div>
+      <div class="city-time" id="beijing-time"></div>
+      <i class="clock-icon">⏰</i>
+    </div>
+
+    <div class="city">
+      <div class="city-name">华盛顿</div>
+      <div class="city-time" id="washington-time"></div>
+      <i class="clock-icon">⏰</i>
+    </div>
+
+    <div class="city">
+      <div class="city-name">伦敦</div>
+      <div class="city-time" id="london-time"></div>
+      <i class="clock-icon">⏰</i>
+    </div>
+
+    <div class="city">
+      <div class="city-name">巴黎</div>
+      <div class="city-time" id="paris-time"></div>
+      <i class="clock-icon">⏰</i>
+    </div>
+  </div>
+  <div id="system-time"></div>
+
+  <script>
+    function updateTimes() {
+      var beijingTime = new Date().toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" });
+      document.getElementById("beijing-time").textContent = beijingTime;
+
+      var washingtonTime = new Date().toLocaleString("zh-CN", { timeZone: "America/New_York" });
+      document.getElementById("washington-time").textContent = washingtonTime;
+
+      var londonTime = new Date().toLocaleString("zh-CN", { timeZone: "Europe/London" });
+      document.getElementById("london-time").textContent = londonTime;
+
+      var parisTime = new Date().toLocaleString("zh-CN", { timeZone: "Europe/Paris" });
+      document.getElementById("paris-time").textContent = parisTime;
+    }
+
+    setInterval(updateTimes, 1);
+  </script>
+      <script src="./js/updateTime.js"></script>
+    <a href="./shouye.html" class="home-link">首页</a>
+    <a href="https://xm666.eu.org" class="home-link">XM博客</a>
+    <script src="./js/backToTop.js"></script> <!-- 引入返回顶部功能 -->
+</body>
+</html>

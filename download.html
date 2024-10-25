@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>XM下载软件页面</title>
+    <link rel="shortcut icon" href="ico/cat.ico">
+    <link rel="stylesheet" href="./css/system-time.css">
+    <link rel="stylesheet" href="./css/home-link.css">
+    <link rel="stylesheet" href="./css/body.css">
+    <link rel="stylesheet" href="./css/back-to-top.css"> <!-- 引入back-to-top.css -->
+    <style>
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+
+        .content-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin-top: 30px;
+        }
+
+        .software-info {
+            max-width: 800px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+        }
+
+        .software-info h2 {
+            color: #333333;
+        }
+
+        .software-info p {
+            font-size: 18px;
+            color: #666666;
+            line-height: 1.6;
+        }
+
+        .download-section {
+            text-align: center;
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px; /* 调整按钮之间的间距 */
+        }
+
+        .download-button {
+            font-size: 20px;
+            color: #fff;
+            background-color: #007bff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            width: 200px; /* 设定固定宽度以保持一致 */
+            display: inline-block;
+            text-align: center;
+        }
+
+        .download-button:hover {
+            background-color: #0056b3;
+        }
+
+        .screenshots {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .screenshot {
+            width: 200px;
+            height: 120px;
+            margin: 0 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .system-requirements {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="back-to-top" class="back-to-top">返回顶部</button>
+    <h1>XM-下载各种软件</h1>
+
+    <div id="system-time"></div>
+    <!-- 时间 -->
+     
+    <div class="content-container">
+        <div class="software-info">
+            <h2>软件简介</h2>
+            <p>各种软件</p>
+            <h2>功能特点</h2>
+            <ul>
+                <li>!!!!：点击下载</li>
+                <li>!!!：点击下载</li>
+                <li>!!：点击下载</li>
+                <li>!：点击下载</li>
+            </ul>
+
+            <h2>版本信息</h2>
+            <p>当前版本：Unknown</p>
+            <p>更新时间：2024年10月22日</p>
+
+            <div class="download-section">
+                <a href="./download/ToDesk_4.7.5.2.exe" class="download-button">todesk</a>
+                <a href="./download/winrar-x64-700scp.exe" class="download-button">winrar</a>
+                <a href="./download/32_QQ_9.9.15_241009_x86_01.exe" class="download-button">32位QQ</a>
+            </div>
+        </div>
+
+        <!-- <div class="screenshots">
+            <div class="screenshot">软件截图1-未来待定</div>
+            <div class="screenshot">软件截图2-未来待定</div>
+            <div class="screenshot">软件截图3-未来待定</div>
+        </div> -->
+    </div>
+
+    <!-- <div class="system-requirements">
+        <h2>系统要求</h2>
+        <ul>
+            <li>操作系统：Windows 10 或以上版本</li>
+            <li>处理器：1GHz 或更快</li>
+            <li>内存：至少 512 MB RAM</li>
+            <li>硬盘空间：至少 100 MB 可用空间</li>
+        </ul>
+    </div> -->
+    <a href="./shouye.html" class="home-link">首页</a>
+    <a href="https://xm666.eu.org" class="home-link">XM博客</a>
+</body>
+    <script src="./js/updateTime.js"></script>
+    <script src="./js/backToTop.js"></script> <!-- 引入返回顶部功能 -->
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>确认跳转页面</title>
+  <link rel="shortcut icon" href="ico/cat.ico">
+  <link rel="stylesheet" href="./css/system-time.css">
+  <link rel="stylesheet" href="./css/home-link.css">
+  <link rel="stylesheet" href="./css/body.css">
+  <link rel="stylesheet" href="./css/back-to-top.css"> <!-- 引入back-to-top.css -->
+  <style>
+    h1 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .confirm-button {
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .confirm-button:hover {
+      background-color: #555;
+    }
+
+    p {
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .disclaimer-box {
+      background-color: #f8ccc8;
+      border-radius: 4px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .disclaimer-box p:last-child {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="back-to-top" class="back-to-top">返回顶部</button>
+  <div id="system-time"></div>
+  <div class="disclaimer-box">
+    <h1>免责声明</h1>
+    <p>在使用本网站（https://www.xmsteam.eu.org或https://xmsteam.eu.org）之前，请仔细阅读以下免责声明：</p>
+    <p>本网站的内容仅供参考和个人使用，不构成任何形式的法律、金融、医疗或其他专业建议。您应当在采取行动之前，咨询相关专业人士以获得适当的建议。</p>
+    <p>本网站力求提供准确、全面和最新的信息，但无法保证信息的准确性和完整性。对于因使用本网站而导致的任何损失或损害，本网站概不负责。</p>
+    <p>本网站可能包含指向其他网站的链接，但并不意味着我们对这些网站的内容或准确性进行认可或负责。您在访问这些链接时应自行承担风险。</p>
+    <p>我们保留随时更改免责声明的权利，恕不另行通知。您应定期查看本页面以了解任何更改。</p>
+    <p>如有任何疑问或需要进一步信息，请联系我们。</p>
+    <p>使用该网站任何页面均同意该声明。</p>
+    <p>再次感谢您使用本网站。</p>
+    <p>致谢！</p>
+  </div>
+  <div id="system-time"></div>
+  <button style="text-align: center;" class="confirm-button" onclick="redirectToIndex()">确认跳转</button>
+
+  <script>
+    function redirectToIndex() {
+      var confirmed = confirm("我以确保同意声明。");
+      if (confirmed) {
+        window.location.href = "./shouye.html";
+      }
+    }
+  </script>
+  <script src="./js/updateTime.js"></script>
+  <script src="./js/backToTop.js"></script> <!-- 引入返回顶部功能 -->
+</body>
+
+</html>
