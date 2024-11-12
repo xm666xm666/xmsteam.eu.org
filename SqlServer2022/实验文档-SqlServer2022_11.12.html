@@ -50,19 +50,13 @@
   <script>
     let zoomedImage = null; // 跟踪当前放大的图片
 
-    const images = [
-      "../picture/SqlServer2022/11.12/SqlServer2022_11.12-1.png",
-        "../picture/SqlServer2022/11.12/SqlServer2022_11.12-2.png",
-        "../picture/SqlServer2022/11.12/SqlServer2022_11.12-3.png",
-        "../picture/SqlServer2022/11.12/SqlServer2022_11.12-4.png",
-        "../picture/SqlServer2022/11.12/SqlServer2022_11.12-5.png",
-        "../picture/SqlServer2022/11.12/SqlServer2022_11.12-6.png",
-        "../picture/SqlServer2022/11.12/SqlServer2022_11.12-7.png",
-        "../picture/SqlServer2022/11.12/SqlServer2022_11.12-8.png",
-        "../picture/SqlServer2022/11.12/SqlServer2022_11.12-9.png",
-        "../picture/SqlServer2022/11.12/SqlServer2022_11.12-10.png",
-        "../picture/SqlServer2022/11.12/SqlServer2022_11.12-11.png"
-    ];
+    const totalImages = 11; // 指定图片总数量
+    const images = [];
+
+    // 动态生成图片路径
+    for (let i = 1; i <= totalImages; i++) {
+      images.push(`../picture/SqlServer2022/11.12/SqlServer2022_11.12-${i}.png`);
+    }
     
     const gallery = document.getElementById('gallery');
 
