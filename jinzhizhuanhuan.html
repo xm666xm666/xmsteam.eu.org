@@ -1,182 +1,417 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
   <meta charset="UTF-8">
-  <title>多种进制转换器</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>多种进制转换器 - XM企业级插件网</title>
   <link rel="shortcut icon" href="ico/cat.ico">
   <link rel="stylesheet" href="./css/system-time.css">
   <link rel="stylesheet" href="./css/home-link.css">
   <link rel="stylesheet" href="./css/body.css">
-  <link rel="stylesheet" href="./css/back-to-top.css"> <!-- 引入back-to-top.css -->
+  <link rel="stylesheet" href="./css/back-to-top.css">
   <style>
-    .container {
-      max-width: 400px;
-      margin: 0 auto;
-      padding: 20px;
+    /* 确保返回顶部按钮样式正确 */
+    #back-to-top, .back-to-top {
+      position: fixed !important;
+      bottom: 30px !important;
+      right: 30px !important;
+      display: block !important;
+      z-index: 1000 !important;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+      color: white !important;
+      padding: 15px 20px !important;
+      border: none !important;
+      border-radius: 50px !important;
+      cursor: pointer !important;
+      font-size: 16px !important;
+      font-weight: 600 !important;
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3) !important;
+      transition: all 0.3s ease !important;
+      backdrop-filter: blur(10px) !important;
+      border: 2px solid rgba(255, 255, 255, 0.2) !important;
+      width: auto !important;
+      max-width: none !important;
+    }
+    
+    /* 企业级进制转换器样式 */
+    .converter-hero {
+      text-align: center;
+      padding: 60px 0;
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+      border-radius: 20px;
+      margin: 40px 0;
+    }
+    
+    .converter-hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .converter-hero p {
+      font-size: 1.2rem;
+      color: #2c3e50;
+      max-width: 600px;
+      margin: 0 auto 30px auto;
+      font-weight: 500;
     }
 
-    h1 {
-      text-align: center;
+    .converter-container {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 50px 40px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      margin: 50px 0;
+      border: 2px solid rgba(102, 126, 234, 0.1);
+      position: relative;
+      overflow: hidden;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .converter-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .form-group {
+      margin-bottom: 25px;
     }
 
     label {
       display: block;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #2c3e50;
+      font-size: 1.1rem;
     }
 
     input#number {
       width: 100%;
-      padding: 5px;
-      margin-bottom: 10px;
+      padding: 15px 20px;
+      border: 2px solid #e1e8ed;
+      border-radius: 12px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      background: #ffffff;
+      box-sizing: border-box;
+    }
+
+    input#number:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
     }
 
     select {
       width: 100%;
-      padding: 5px;
-      margin-bottom: 10px;
+      padding: 15px 20px;
+      border: 2px solid #e1e8ed;
+      border-radius: 12px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      background: #ffffff;
+      box-sizing: border-box;
+    }
+
+    select:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
     }
 
     button {
       width: 100%;
-      padding: 10px;
-      background-color: #4CAF50;
+      padding: 18px 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
       border: none;
+      border-radius: 12px;
       cursor: pointer;
+      font-size: 1.2rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+      margin: 20px 0;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+      background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
     }
 
     .result {
-      margin-top: 20px;
-      font-weight: bold;
+      margin-top: 30px;
+      font-weight: 600;
+      color: #2c3e50;
+      font-size: 1.2rem;
     }
 
     .result-box {
-      border: 1px solid #ccc;
-      padding: 5px;
-      margin-top: 10px;
-      font-size: 16px;
-      min-height: 40px;
+      border: 2px solid #e1e8ed;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 15px;
+      font-size: 18px;
+      min-height: 60px;
       display: flex;
       align-items: center;
       justify-content: center;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border: 2px solid rgba(102, 126, 234, 0.1);
     }
 
     .result-box input[type="text"] {
       flex: 1;
       border: none;
       background-color: transparent;
-      font-size: 16px;
-      padding: 5px;
+      font-size: 18px;
+      padding: 10px;
       outline: none;
+      color: #2c3e50;
+      font-weight: 600;
     }
 
     .result-box button {
-      background-color: #4CAF50;
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
       color: white;
       border: none;
-      padding: 5px 10px;
-      margin-left: 10px;
+      padding: 10px 20px;
+      margin-left: 15px;
       cursor: pointer;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+      width: auto;
     }
 
-    .copy-btn {
-      margin-top: 10px;
+    .result-box button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
+    }
+
+    .version-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin: 20px 0;
+      box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+    }
+
+    .features-section {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 40px;
+      margin: 50px 0;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .feature-item {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .feature-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    .feature-description {
+      color: #2c3e50;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .converter-container {
+        margin: 20px;
+        padding: 30px 20px;
+      }
+      
+      .converter-hero h1 {
+        font-size: 2.2rem;
+      }
     }
   </style>
 </head>
-
 <body>
-  <button id="back-to-top" class="back-to-top">返回顶部</button>
-  <div class="container">
-    <h1>多种进制转换器</h1>
-    <h1>支持浮点型</h1>
-    <h2>版本v2.0</h2>
-    <label for="number">输入一个数字：</label>
-    <input type="text" id="number" step="any" placeholder="请输入数字" />
-    <label for="from">转换前进制：</label>
-    <select id="from">
-      <option value="2">二进制</option>
-      <option value="3">三进制</option>
-      <option value="4">四进制</option>
-      <option value="5">五进制</option>
-      <option value="6">六进制</option>
-      <option value="7">七进制</option>
-      <option value="8">八进制</option>
-      <option value="9">九进制</option>
-      <option value="10" selected>十进制</option>
-      <option value="11">十一进制</option>
-      <option value="12">十二进制</option>
-      <option value="13">十三进制</option>
-      <option value="14">十四进制</option>
-      <option value="15">十五进制</option>
-      <option value="16">十六进制</option>
-      <option value="17">十七进制</option>
-      <option value="18">十八进制</option>
-      <option value="19">十九进制</option>
-      <option value="20">二十进制</option>
-      <option value="21">二十一进制</option>
-      <option value="22">二十二进制</option>
-      <option value="23">二十三进制</option>
-      <option value="24">二十四进制</option>
-      <option value="25">二十五进制</option>
-      <option value="26">二十六进制</option>
-      <option value="27">二十七进制</option>
-      <option value="28">二十八进制</option>
-      <option value="29">二十九进制</option>
-      <option value="30">三十进制</option>
-      <option value="31">三十一进制</option>
-      <option value="32">三十二进制</option>
-      <option value="33">三十三进制</option>
-      <option value="34">三十四进制</option>
-      <option value="35">三十五进制</option>
-      <option value="36">三十六进制</option>
-    </select>
-    <label for="to">转换后进制：</label>
-    <select id="to">
-      <option value="2" selected>二进制</option>
-      <option value="3">三进制</option>
-      <option value="4">四进制</option>
-      <option value="5">五进制</option>
-      <option value="6">六进制</option>
-      <option value="7">七进制</option>
-      <option value="8">八进制</option>
-      <option value="9">九进制</option>
-      <option value="10">十进制</option>
-      <option value="11">十一进制</option>
-      <option value="12">十二进制</option>
-      <option value="13">十三进制</option>
-      <option value="14">十四进制</option>
-      <option value="15">十五进制</option>
-      <option value="16">十六进制</option>
-      <option value="17">十七进制</option>
-      <option value="18">十八进制</option>
-      <option value="19">十九进制</option>
-      <option value="20">二十进制</option>
-      <option value="21">二十一进制</option>
-      <option value="22">二十二进制</option>
-      <option value="23">二十三进制</option>
-      <option value="24">二十四进制</option>
-      <option value="25">二十五进制</option>
-      <option value="26">二十六进制</option>
-      <option value="27">二十七进制</option>
-      <option value="28">二十八进制</option>
-      <option value="29">二十九进制</option>
-      <option value="30">三十进制</option>
-      <option value="31">三十一进制</option>
-      <option value="32">三十二进制</option>
-      <option value="33">三十三进制</option>
-      <option value="34">三十四进制</option>
-      <option value="35">三十五进制</option>
-      <option value="36">三十六进制</option>
-    </select>
-    <button onclick="convert()">转换</button>
-    <div class="result" id="result">
-      转换结果:
-      <div class="result-box" id="result-box"></div>
+  <div class="main-container">
+    <button id="back-to-top" class="back-to-top">返回顶部</button>
+    <div class="content-area">
+      <!-- 英雄区域 -->
+      <div class="converter-hero">
+        <h1>多种进制转换器</h1>
+        <p>支持2-36进制转换，支持浮点数计算，为程序员和数学爱好者提供专业工具</p>
+        <div class="version-badge">版本 v2.0</div>
+        <div id="system-time"></div>
+      </div>
+
+      <!-- 转换器 -->
+      <div class="converter-container">
+        <h2>进制转换工具</h2>
+        <div class="form-group">
+          <label for="number">输入一个数字：</label>
+          <input type="text" id="number" step="any" placeholder="请输入数字" />
+        </div>
+        
+        <div class="form-group">
+          <label for="from">转换前进制：</label>
+          <select id="from">
+            <option value="2">二进制</option>
+            <option value="3">三进制</option>
+            <option value="4">四进制</option>
+            <option value="5">五进制</option>
+            <option value="6">六进制</option>
+            <option value="7">七进制</option>
+            <option value="8">八进制</option>
+            <option value="9">九进制</option>
+            <option value="10" selected>十进制</option>
+            <option value="11">十一进制</option>
+            <option value="12">十二进制</option>
+            <option value="13">十三进制</option>
+            <option value="14">十四进制</option>
+            <option value="15">十五进制</option>
+            <option value="16">十六进制</option>
+            <option value="17">十七进制</option>
+            <option value="18">十八进制</option>
+            <option value="19">十九进制</option>
+            <option value="20">二十进制</option>
+            <option value="21">二十一进制</option>
+            <option value="22">二十二进制</option>
+            <option value="23">二十三进制</option>
+            <option value="24">二十四进制</option>
+            <option value="25">二十五进制</option>
+            <option value="26">二十六进制</option>
+            <option value="27">二十七进制</option>
+            <option value="28">二十八进制</option>
+            <option value="29">二十九进制</option>
+            <option value="30">三十进制</option>
+            <option value="31">三十一进制</option>
+            <option value="32">三十二进制</option>
+            <option value="33">三十三进制</option>
+            <option value="34">三十四进制</option>
+            <option value="35">三十五进制</option>
+            <option value="36">三十六进制</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="to">转换后进制：</label>
+          <select id="to">
+            <option value="2" selected>二进制</option>
+            <option value="3">三进制</option>
+            <option value="4">四进制</option>
+            <option value="5">五进制</option>
+            <option value="6">六进制</option>
+            <option value="7">七进制</option>
+            <option value="8">八进制</option>
+            <option value="9">九进制</option>
+            <option value="10">十进制</option>
+            <option value="11">十一进制</option>
+            <option value="12">十二进制</option>
+            <option value="13">十三进制</option>
+            <option value="14">十四进制</option>
+            <option value="15">十五进制</option>
+            <option value="16">十六进制</option>
+            <option value="17">十七进制</option>
+            <option value="18">十八进制</option>
+            <option value="19">十九进制</option>
+            <option value="20">二十进制</option>
+            <option value="21">二十一进制</option>
+            <option value="22">二十二进制</option>
+            <option value="23">二十三进制</option>
+            <option value="24">二十四进制</option>
+            <option value="25">二十五进制</option>
+            <option value="26">二十六进制</option>
+            <option value="27">二十七进制</option>
+            <option value="28">二十八进制</option>
+            <option value="29">二十九进制</option>
+            <option value="30">三十进制</option>
+            <option value="31">三十一进制</option>
+            <option value="32">三十二进制</option>
+            <option value="33">三十三进制</option>
+            <option value="34">三十四进制</option>
+            <option value="35">三十五进制</option>
+            <option value="36">三十六进制</option>
+          </select>
+        </div>
+        
+        <button onclick="convert()">🔄 开始转换</button>
+        
+        <div class="result" id="result">
+          转换结果:
+          <div class="result-box" id="result-box"></div>
+        </div>
+      </div>
+      
+      <!-- 功能特色 -->
+      <div class="features-section">
+        <h2>功能特色</h2>
+        <div class="features-grid">
+          <div class="feature-item">
+            <span class="feature-icon">🔢</span>
+            <h3 class="feature-title">多进制支持</h3>
+            <p class="feature-description">支持2-36进制转换，满足各种编程和数学需求</p>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">📊</span>
+            <h3 class="feature-title">浮点数支持</h3>
+            <p class="feature-description">支持小数转换，精确到小数点后多位</p>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">📋</span>
+            <h3 class="feature-title">一键复制</h3>
+            <p class="feature-description">转换结果支持一键复制，方便使用</p>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">⚡</span>
+            <h3 class="feature-title">实时转换</h3>
+            <p class="feature-description">输入即时转换，无需等待</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 导航链接 -->
+      <div class="card">
+        <div class="nav-links-container">
+          <a href="./shouye.html" class="home-link">返回首页</a>
+          <a href="https://xm666.eu.org" class="home-link">XM博客</a>
+        </div>
+      </div>
     </div>
-    <div id="system-time"></div>
   </div>
+
   <script>
     function convert() {
       var number = document.getElementById('number').value.trim().toUpperCase();
@@ -230,9 +465,9 @@
       }
 
       document.getElementById('result-box').innerHTML = `
-    <input type="text" value="${result}" readonly>
-    <button onclick="copyResult()">复制</button>
-  `;
+        <input type="text" value="${result}" readonly>
+        <button onclick="copyResult()">复制</button>
+      `;
     }
 
     function copyResult() {
@@ -257,10 +492,8 @@
       }
     }
   </script>
-  <a href="./shouye.html" class="home-link">首页</a>
-  <a href="https://xm666.eu.org" class="home-link">XM博客</a>
+  
   <script src="./js/updateTime.js"></script>
-  <script src="./js/backToTop.js"></script> <!-- 引入返回顶部功能 -->
+  <script src="./js/backToTop.js"></script>
 </body>
-
 </html>

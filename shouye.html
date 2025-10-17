@@ -3,109 +3,346 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XM的插件网</title>
+    <title>XM企业级插件网 - 专业工具与学习资源平台</title>
     <link rel="shortcut icon" href="ico/cat.ico">
     <link rel="stylesheet" href="./css/system-time.css">
     <link rel="stylesheet" href="./css/body.css">
-    <link rel="stylesheet" href="./css/back-to-top.css"> <!-- 引入back-to-top.css -->
+    <link rel="stylesheet" href="./css/home-link.css">
+    <link rel="stylesheet" href="./css/back-to-top.css">
     <style>
-        .welcome-section {
+        /* 企业级首页样式 */
+        .hero-section {
             text-align: center;
-            padding: 100px 0;
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: 20px;
+            margin: 40px 0;
         }
         
-        h1 {
-            font-size: 48px;
-            color: #333;
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
             margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
-        p {
-            font-size: 24px;
-            color: #777;
-            margin-bottom: 40px;
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #5a6c7d;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .feature-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .feature-description {
+            color: #5a6c7d;
+            line-height: 1.6;
+            margin-bottom: 25px;
         }
         
         .cta-button {
             display: inline-block;
-            padding: 10px 20px;
-            font-size: 20px;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 600;
             color: #fff;
-            background-color: #007bff;
-            border-radius: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
             text-decoration: none;
-            transition: background-color 0.3s ease;
-            margin: 10px; /* 增加按钮之间的间隔 */
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            border: 2px solid transparent;
         }
         
         .cta-button:hover {
-            background-color: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
         }
-
-        .home-link {
-            text-decoration: none;
-            font-size: 25px;
-            color: #fff;
-            background-color: #007bff;
-            padding: 8px 10px;
-            border: 2px solid #333;
-            border-radius: 5px;
-            display: block;
+        
+        .cta-button.secondary {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            box-shadow: 0 4px 15px rgba(240, 147, 251, 0.3);
+        }
+        
+        .cta-button.success {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+        }
+        
+        .stats-section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 50px;
+            margin: 50px 0;
             text-align: center;
-            margin: 20px 0; /* 上下间隔保持 */
         }
-
-        .home-link:hover {
-            background-color: #0056b3;
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
         }
-
-        /* 仅在较小的屏幕上应用网格布局 */
+        
+        .stat-item {
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #667eea;
+            display: block;
+        }
+        
+        .stat-label {
+            color: #5a6c7d;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+        
+        .navigation-section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+        
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .nav-item {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .nav-item:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+        
+        .nav-item a {
+            color: inherit;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .nav-item:hover a {
+            color: white;
+        }
+        
+        /* 工具区域样式 */
+        .tools-section {
+            margin: 60px 0;
+        }
+        
+        .tools-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
         @media (max-width: 768px) {
-            .welcome-section {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr); /* 每行两个按钮 */
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
                 gap: 20px;
-                justify-items: center;
             }
-
-            .cta-button, .home-link {
-                width: 100%; /* 让按钮在网格布局中填满可用空间 */
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
-
-            h1, p {
-                grid-column: span 2; /* 在网格布局中，标题和描述仍占满两列 */
-            }
-        }
-
-        @media (max-width: 480px) {
-            .welcome-section {
-                grid-template-columns: 1fr; /* 更小屏幕上，每行一个按钮 */
-            }
-
-            h1, p {
-                grid-column: span 1; /* 重新占据一整行 */
+            
+            .tools-section h2 {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <button id="back-to-top" class="back-to-top">返回顶部</button>
-    <div class="welcome-section">
-        <h1>欢迎来到XM的插件网</h1>
-        <p>发现一个充满可能性的世界！</p>
-        <a href="./index.html" class="cta-button">免责声明</a>
-        <a href="./time.html" class="cta-button">世界时间</a>
-        <a href="./enname.html" class="cta-button">随机英文名称生成器</a>
-        <a href="./jinzhizhuanhuan.html" class="cta-button">多种进制转换</a>
-        <a href="./download.html" class="cta-button">XM软件</a>
-        <a href="./SqlServer2022.html" class="cta-button">SqlServer2022</a>
-        <a href="./数据结构.html" class="cta-button">数据结构</a>
-        <a href="./office/office_download.html" class="cta-button">高级Office作业</a>
-        <a href="https://www.xmsteam.eu.org/shouye.html" class="home-link">首页</a>
-        <a href="https://xm666.eu.org" class="home-link">XM博客</a>
-        <div id="system-time"></div>
+    <div class="main-container">
+        <button id="back-to-top" class="back-to-top">返回顶部</button>
+        <div class="content-area">
+            <!-- 英雄区域 -->
+            <div class="hero-section">
+                <h1 class="hero-title">XM企业级插件网</h1>
+                <p class="hero-subtitle">专业工具与学习资源平台，为您提供高效便捷的在线服务体验</p>
+                <div id="system-time"></div>
+            </div>
+            
+            <!-- 主要功能区域 -->
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">📊</span>
+                    <h3 class="feature-title">Office作业助手</h3>
+                    <p class="feature-description">提供完整的Office作业答案，包括Word、Excel、PowerPoint等，助您高效完成作业。</p>
+                    <a href="./office/office_download.html" class="cta-button">查看作业</a>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">🗄️</span>
+                    <h3 class="feature-title">SqlServer2022</h3>
+                    <p class="feature-description">完整的数据库学习资源，包含实验文档、理论解析，助您掌握数据库技术。</p>
+                    <a href="./SqlServer2022.html" class="cta-button">学习数据库</a>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">📚</span>
+                    <h3 class="feature-title">数据结构</h3>
+                    <p class="feature-description">数据结构理论学习资源，包含算法图解、实例分析，提升编程能力。</p>
+                    <a href="./数据结构.html" class="cta-button secondary">学习算法</a>
+                </div>
+            </div>
+            
+            <!-- 实用工具区域 -->
+            <div class="tools-section">
+                <h2>实用工具</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <span class="feature-icon">⏰</span>
+                        <h3 class="feature-title">世界时间</h3>
+                        <p class="feature-description">实时显示全球主要城市时间，支持多时区对比，让您轻松掌握世界各地时间。</p>
+                        <a href="./time.html" class="cta-button">立即使用</a>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <span class="feature-icon">🎲</span>
+                        <h3 class="feature-title">随机英文名生成器</h3>
+                        <p class="feature-description">智能生成英文姓名，支持多种风格选择，适用于游戏、写作、学习等场景。</p>
+                        <a href="./enname.html" class="cta-button secondary">开始生成</a>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <span class="feature-icon">🔢</span>
+                        <h3 class="feature-title">进制转换器</h3>
+                        <p class="feature-description">支持2-36进制转换，支持浮点数计算，为程序员和数学爱好者提供专业工具。</p>
+                        <a href="./jinzhizhuanhuan.html" class="cta-button success">开始转换</a>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <span class="feature-icon">💾</span>
+                        <h3 class="feature-title">软件下载中心</h3>
+                        <p class="feature-description">提供各类实用软件下载，包括办公软件、开发工具等，安全可靠。</p>
+                        <a href="./download.html" class="cta-button">浏览软件</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 统计数据区域 -->
+            <div class="stats-section">
+                <h2>平台数据统计</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">8+</span>
+                        <div class="stat-label">核心功能模块</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50+</span>
+                        <div class="stat-label">学习资源文档</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <div class="stat-label">免费使用</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <div class="stat-label">在线服务</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 快速导航区域 -->
+            <div class="navigation-section">
+                <h2>快速导航</h2>
+                <div class="nav-grid">
+                    <div class="nav-item">
+                        <a href="./index.html">免责声明</a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="https://xm666.eu.org">XM博客</a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="https://www.xmsteam.eu.org">官网首页</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    
     <script src="./js/updateTime.js"></script>
-    <script src="./js/backToTop.js"></script> <!-- 引入返回顶部功能 -->
+    <script src="./js/backToTop.js"></script>
 </body>
 </html>

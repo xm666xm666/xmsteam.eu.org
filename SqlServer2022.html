@@ -3,84 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SqlServer2022实验文档</title>
+    <title>SqlServer2022实验文档 - XM企业级插件网</title>
     <link rel="shortcut icon" href="ico/cat.ico">
     <link rel="stylesheet" href="./css/system-time.css">
     <link rel="stylesheet" href="./css/home-link.css">
     <link rel="stylesheet" href="./css/body.css">
-    <link rel="stylesheet" href="./css/back-to-top.css"> <!-- 引入back-to-top.css -->
+    <link rel="stylesheet" href="./css/back-to-top.css">
     <style>
-        .welcome-section {
+        /* 企业级SqlServer2022页面样式 */
+        .sql-hero {
             text-align: center;
-            padding: 100px 0;
+            padding: 60px 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: 20px;
+            margin: 40px 0;
         }
         
-        h1 {
-            font-size: 48px;
-            color: #333;
+        .sql-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .sql-hero p {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            font-weight: 500;
+        }
+
+        .welcome-section {
+            text-align: center;
+            padding: 50px 0;
+        }
+        
+        .welcome-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
             margin-bottom: 20px;
         }
         
-        p {
-            font-size: 24px;
-            color: #777;
+        .welcome-section p {
+            font-size: 1.3rem;
+            color: #2c3e50;
             margin-bottom: 40px;
+            font-weight: 500;
         }
         
         .file-link {
             display: block;
-            padding: 15px;
-            font-size: 20px;
+            padding: 20px 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
             color: #fff;
-            background-color: #007bff;
-            border-radius: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
             text-decoration: none;
-            margin: 10px auto;
-            width: 300px; /* 设置固定宽度 */
-            transition: background-color 0.3s ease;
+            margin: 15px auto;
+            width: 400px;
+            max-width: 90%;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            border: 2px solid transparent;
         }
 
         .file-link:hover {
-            background-color: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+
+        .file-link.special {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+        }
+
+        .file-link.special:hover {
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            box-shadow: 0 8px 25px rgba(79, 172, 254, 0.4);
         }
 
         .back-link {
             display: inline-block;
-            padding: 10px 20px;
-            font-size: 20px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
             color: #fff;
-            background-color: #007bff;
-            border-radius: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
             text-decoration: none;
-            margin-top: 20px;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
 
         .back-link:hover {
-            background-color: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+
+        .stats-section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 50px 0;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .stat-item {
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #667eea;
+            display: block;
+        }
+        
+        .stat-label {
+            color: #2c3e50;
+            font-size: 1.1rem;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .file-link {
+                width: 100%;
+                max-width: 350px;
+                padding: 15px 20px;
+                font-size: 1.1rem;
+            }
+            
+            .sql-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .welcome-section h2 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <button id="back-to-top" class="back-to-top">返回顶部</button>
-    <div class="welcome-section">
-        <h1>选择您要访问SqlServer的文档日期</h1>
-        <p>请点击以下链接访问相关文档或资源：</p>
-        <a href="./SqlServer2022/数据库理论与解题-闭包_候选码_主属性_几范式.html" class="file-link">数据库理论与解题-[闭包+候选码+主属性+几范式]</a>
-        <a href="./SqlServer2022/实验文档-SqlServer2022_9.24.html" class="file-link">9.24</a>
-        <a href="./SqlServer2022/实验文档-SqlServer2022_10.8.html" class="file-link">10.8</a>
-        <a href="./SqlServer2022/实验文档-SqlServer2022_10.15.html" class="file-link">10.15</a>
-        <a href="./SqlServer2022/实验文档-SqlServer2022_10.22.html" class="file-link">10.22</a>
-        <a href="./SqlServer2022/实验文档-SqlServer2022_10.29.html" class="file-link">10.29</a>
-        <a href="./SqlServer2022/实验文档-SqlServer2022_11.5.html" class="file-link">11.5</a>
-        <a href="./SqlServer2022/实验文档-SqlServer2022_11.12.html" class="file-link">11.12</a>
-        <a href="#" class="file-link">unknown</a>
-        <a href="#" class="file-link">unknown</a>
-        <a href="./shouye.html" class="home-link">首页</a>
-        <a href="https://xm666.eu.org" class="home-link">XM博客</a>
-        <div id="system-time"></div>
+    <div class="main-container">
+        <button id="back-to-top" class="back-to-top">返回顶部</button>
+        <div class="content-area">
+            <!-- 英雄区域 -->
+            <div class="sql-hero">
+                <h1>SqlServer2022实验文档</h1>
+                <p>完整的数据库学习资源，包含实验文档、理论解析，助您掌握数据库技术</p>
+                <div id="system-time"></div>
+            </div>
+            
+            <div class="welcome-section">
+                <h2>选择您要访问SqlServer的文档日期</h2>
+                <p>请点击以下链接访问相关文档或资源：</p>
+                
+                <a href="./SqlServer2022/数据库理论与解题-闭包_候选码_主属性_几范式.html" class="file-link special">数据库理论与解题-[闭包+候选码+主属性+几范式]</a>
+                <a href="./SqlServer2022/实验文档-SqlServer2022_9.24.html" class="file-link">9.24 实验文档</a>
+                <a href="./SqlServer2022/实验文档-SqlServer2022_10.8.html" class="file-link">10.8 实验文档</a>
+                <a href="./SqlServer2022/实验文档-SqlServer2022_10.15.html" class="file-link">10.15 实验文档</a>
+                <a href="./SqlServer2022/实验文档-SqlServer2022_10.22.html" class="file-link">10.22 实验文档</a>
+                <a href="./SqlServer2022/实验文档-SqlServer2022_10.29.html" class="file-link">10.29 实验文档</a>
+                <a href="./SqlServer2022/实验文档-SqlServer2022_11.5.html" class="file-link">11.5 实验文档</a>
+                <a href="./SqlServer2022/实验文档-SqlServer2022_11.12.html" class="file-link">11.12 实验文档</a>
+            </div>
+            
+            <!-- 统计信息 -->
+            <div class="stats-section">
+                <h2>学习资源统计</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">7+</span>
+                        <div class="stat-label">实验文档</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">1</span>
+                        <div class="stat-label">理论专题</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">完整</span>
+                        <div class="stat-label">学习体系</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 导航链接 -->
+            <div class="card">
+                <div class="nav-links-container">
+                    <a href="./shouye.html" class="home-link">返回首页</a>
+                    <a href="https://xm666.eu.org" class="home-link">XM博客</a>
+                </div>
+            </div>
+        </div>
     </div>
-    <script src="./js/backToTop.js"></script> <!-- 引入返回顶部功能 -->
+    
     <script src="./js/updateTime.js"></script>
+    <script src="./js/backToTop.js"></script>
 </body>
-
 </html>

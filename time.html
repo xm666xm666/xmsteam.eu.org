@@ -2,100 +2,245 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>世界时间展示</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>世界时间展示 - XM企业级插件网</title>
   <link rel="shortcut icon" href="ico/cat.ico">
   <link rel="stylesheet" href="./css/system-time.css">
   <link rel="stylesheet" href="./css/home-link.css">
   <link rel="stylesheet" href="./css/body.css">
-  <link rel="stylesheet" href="./css/back-to-top.css"> <!-- 引入back-to-top.css -->
+  <link rel="stylesheet" href="./css/back-to-top.css">
   <style>
-    h1 {
+    /* 企业级世界时间页面样式 */
+    .time-hero {
       text-align: center;
-      color: #333333;
+      padding: 60px 0;
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+      border-radius: 20px;
+      margin: 40px 0;
+    }
+    
+    .time-hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .time-hero p {
+      font-size: 1.2rem;
+      color: #5a6c7d;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
-    .city-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 30px;
+    .world-clock-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin: 50px 0;
     }
 
-    .city {
+    .city-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 40px 30px;
       text-align: center;
-      margin: 0 20px;
-      padding: 20px;
-      border-radius: 10px;
-      background-color: #ffffff;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .city-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .city-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    .city-flag {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      display: block;
     }
 
     .city-name {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 10px;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 15px;
     }
 
     .city-time {
-      font-size: 48px;
-      font-weight: bold;
-      color: #333333;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #667eea;
+      margin-bottom: 20px;
+      font-family: 'Courier New', monospace;
+    }
+
+    .city-timezone {
+      font-size: 1rem;
+      color: #5a6c7d;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      padding: 8px 16px;
+      border-radius: 20px;
+      display: inline-block;
     }
 
     .clock-icon {
-      font-size: 60px;
-      color: #333333;
-      animation: rotate 1s infinite linear;
+      font-size: 2rem;
+      color: #667eea;
+      animation: pulse 2s infinite;
+      margin-top: 15px;
+      display: block;
     }
 
-    @keyframes rotate {
-      from {
-        transform: rotate(0deg);
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 1;
       }
-      to {
-        transform: rotate(360deg);
+      50% {
+        transform: scale(1.1);
+        opacity: 0.8;
       }
     }
-    #system-time {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      font-size: 18px;
-      color: black; /* 修改为黑色 */
-      font-weight: bold; /* 加粗 */
-    } 
+    
+    .stats-section {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 40px;
+      margin: 50px 0;
+      text-align: center;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+    
+    .stat-item {
+      padding: 20px;
+    }
+    
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #667eea;
+      display: block;
+    }
+    
+    .stat-label {
+      color: #5a6c7d;
+      font-size: 1.1rem;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+      .world-clock-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .city-card {
+        padding: 30px 20px;
+      }
+      
+      .city-time {
+        font-size: 1.8rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <button id="back-to-top" class="back-to-top">返回顶部</button>
-  <h1>世界时间展示</h1>
+  <div class="main-container">
+    <button id="back-to-top" class="back-to-top">返回顶部</button>
+    <div class="content-area">
+      <!-- 英雄区域 -->
+      <div class="time-hero">
+        <h1>世界时间展示</h1>
+        <p>实时显示全球主要城市时间，支持多时区对比，让您轻松掌握世界各地时间</p>
+        <div id="system-time"></div>
+      </div>
 
-  <div class="city-container">
-    <div class="city">
-      <div class="city-name">北京</div>
-      <div class="city-time" id="beijing-time"></div>
-      <i class="clock-icon">⏰</i>
-    </div>
+      <!-- 世界时钟网格 -->
+      <div class="world-clock-container">
+        <div class="city-card">
+          <span class="city-flag">🇨🇳</span>
+          <div class="city-name">北京</div>
+          <div class="city-time" id="beijing-time"></div>
+          <div class="city-timezone">UTC+8</div>
+          <span class="clock-icon">⏰</span>
+        </div>
 
-    <div class="city">
-      <div class="city-name">华盛顿</div>
-      <div class="city-time" id="washington-time"></div>
-      <i class="clock-icon">⏰</i>
-    </div>
+        <div class="city-card">
+          <span class="city-flag">🇺🇸</span>
+          <div class="city-name">华盛顿</div>
+          <div class="city-time" id="washington-time"></div>
+          <div class="city-timezone">UTC-5</div>
+          <span class="clock-icon">⏰</span>
+        </div>
 
-    <div class="city">
-      <div class="city-name">伦敦</div>
-      <div class="city-time" id="london-time"></div>
-      <i class="clock-icon">⏰</i>
-    </div>
+        <div class="city-card">
+          <span class="city-flag">🇬🇧</span>
+          <div class="city-name">伦敦</div>
+          <div class="city-time" id="london-time"></div>
+          <div class="city-timezone">UTC+0</div>
+          <span class="clock-icon">⏰</span>
+        </div>
 
-    <div class="city">
-      <div class="city-name">巴黎</div>
-      <div class="city-time" id="paris-time"></div>
-      <i class="clock-icon">⏰</i>
+        <div class="city-card">
+          <span class="city-flag">🇫🇷</span>
+          <div class="city-name">巴黎</div>
+          <div class="city-time" id="paris-time"></div>
+          <div class="city-timezone">UTC+1</div>
+          <span class="clock-icon">⏰</span>
+        </div>
+      </div>
+      
+      <!-- 统计信息 -->
+      <div class="stats-section">
+        <h2>时区信息</h2>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number">4</span>
+            <div class="stat-label">主要城市</div>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">实时</span>
+            <div class="stat-label">时间更新</div>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">全球</span>
+            <div class="stat-label">时区覆盖</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 导航链接 -->
+      <div class="card">
+        <div class="nav-links-container">
+          <a href="./shouye.html" class="home-link">返回首页</a>
+          <a href="https://xm666.eu.org" class="home-link">XM博客</a>
+        </div>
+      </div>
     </div>
   </div>
-  <div id="system-time"></div>
 
   <script>
     function updateTimes() {
@@ -112,11 +257,10 @@
       document.getElementById("paris-time").textContent = parisTime;
     }
 
-    setInterval(updateTimes, 1);
+    setInterval(updateTimes, 1000);
   </script>
-      <script src="./js/updateTime.js"></script>
-    <a href="./shouye.html" class="home-link">首页</a>
-    <a href="https://xm666.eu.org" class="home-link">XM博客</a>
-    <script src="./js/backToTop.js"></script> <!-- 引入返回顶部功能 -->
+  
+  <script src="./js/updateTime.js"></script>
+  <script src="./js/backToTop.js"></script>
 </body>
 </html>
