@@ -2,16 +2,39 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>XM-Office答案下载</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XM-高级Office作业答案 - XM企业级插件网</title>
     <link rel="shortcut icon" href="../ico/cat.ico">
     <link rel="stylesheet" href="../css/system-time.css">
     <link rel="stylesheet" href="../css/home-link.css">
     <link rel="stylesheet" href="../css/body.css">
-    <link rel="stylesheet" href="../css/back-to-top.css"> <!-- 引入back-to-top.css -->
+    <link rel="stylesheet" href="../css/back-to-top.css">
     <style>
-        h1 {
+        /* 企业级Office作业页面样式 */
+        .office-hero {
             text-align: center;
-            color: #333333;
+            padding: 60px 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+        
+        .office-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .office-hero p {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            font-weight: 500;
         }
 
         .content-container {
@@ -23,130 +46,215 @@
 
         .software-info {
             max-width: 800px;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
             margin-right: 20px;
+            border: 2px solid rgba(102, 126, 234, 0.1);
         }
 
         .software-info h2 {
-            color: #333333;
+            color: #2c3e50;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
         }
 
         .software-info p {
-            font-size: 18px;
-            color: #666666;
+            font-size: 1.1rem;
+            color: #2c3e50;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .software-info ul {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+
+        .software-info li {
+            font-size: 1.1rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
             line-height: 1.6;
+            font-weight: 500;
         }
 
         .download-section {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 30px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px; /* 调整按钮之间的间距 */
+            gap: 15px;
         }
 
         .download-button {
-            font-size: 20px;
+            font-size: 18px;
+            font-weight: 600;
             color: #fff;
-            background-color: #007bff;
-            padding: 12px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 15px 25px;
             border: none;
-            border-radius: 5px;
+            border-radius: 12px;
             cursor: pointer;
             text-decoration: none;
-            width: 200px; /* 设定固定宽度以保持一致 */
+            width: 200px;
             display: inline-block;
             text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
 
         .download-button:hover {
-            background-color: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
         }
 
-        .screenshots {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
+        .download-button.secondary {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            box-shadow: 0 4px 15px rgba(240, 147, 251, 0.3);
         }
 
-        .screenshot {
-            width: 200px;
-            height: 120px;
-            margin: 0 10px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            background-color: #f9f9f9;
+        .download-button.secondary:hover {
+            background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
+            box-shadow: 0 8px 25px rgba(240, 147, 251, 0.4);
         }
 
-        .system-requirements {
-            margin-top: 30px;
+        .version-info {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 2px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .version-info h3 {
+            color: #2c3e50;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .version-info p {
+            color: #2c3e50;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border: 2px solid #ffc107;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .warning-box h3 {
+            color: #856404;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .warning-box p {
+            color: #856404;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .content-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .software-info {
+                margin-right: 0;
+                margin-bottom: 20px;
+                padding: 30px 20px;
+            }
+            
+            .download-section {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .download-button {
+                width: 100%;
+                max-width: 300px;
+            }
         }
     </style>
 </head>
-
 <body>
-    <button id="back-to-top" class="back-to-top">返回顶部</button>
-    <h1>XM-高级Office作业答案</h1>
-
-    <div id="system-time"></div>
-    <!-- 时间 -->
-     
-    <div class="content-container">
-        <div class="software-info">
-            <h2>网页简介</h2>
-            <p>高级Office作业答案</p>
-            <h2>功能特点</h2>
-            <ul>
-                <li>!!!!：低调行事</li>
-                <li>!!!：切勿宣传</li>
-                <li>!!：低调行事</li>
-                <li>!：切勿宣传</li>
-            </ul>
-
-            <h2>版本信息</h2>
-            <p>当前版本：第一次~第十次作业</p>
-            <p>更新时间：2024年11月18日</p>
-            <p>使用教程：解压直接复制进作业文件夹提交即可!</p>
-
-            <div class="download-section">
-                <a href="../download/winrar-x64-700scp.exe" class="download-button">Winrar解压软件</a>
-                <a href="../download/office/1.rar" class="download-button">第1次</a>
-                <a href="../download/office/2.rar" class="download-button">第2次</a>
-                <a href="../download/office/3.rar" class="download-button">第3次</a>
-                <a href="../download/office/4.rar" class="download-button">第4次</a>
-                <a href="../download/office/5-10.14.rar" class="download-button">[5]10.14</a>
-                <a href="../download/office/6-10.15.rar" class="download-button">[6]10.15</a>
-                <a href="../download/office/7-10.22.rar" class="download-button">[7]10.22</a>
-                <a href="../download/office/8-10.29.rar" class="download-button">[8]10.29</a>
-                <a href="../download/office/9-11.11.rar" class="download-button">[9]11.11考试模式</a>
-                <a href="../download/office/10-11.18.rar" class="download-button">[10]11.18</a>
+    <div class="main-container">
+        <button id="back-to-top" class="back-to-top">返回顶部</button>
+        <div class="content-area">
+            <!-- 英雄区域 -->
+            <div class="office-hero">
+                <h1>XM-高级Office作业答案</h1>
+                <p>提供完整的Office作业答案，包括Word、Excel、PowerPoint等，助您高效完成作业</p>
+                <div id="system-time"></div>
             </div>
             
+            <div class="content-container">
+                <div class="software-info">
+                    <h2>作业简介</h2>
+                    <p>本平台提供完整的高级Office作业答案，涵盖Word文档处理、Excel数据分析、PowerPoint演示制作等各个方面。</p>
+                    
+                    <h2>功能特点</h2>
+                    <ul>
+                        <li>📊 完整的作业答案：提供第1-10次作业的完整答案</li>
+                        <li>🔧 多种格式支持：支持Word、Excel、PowerPoint等格式</li>
+                        <li>📁 便捷下载：一键下载，解压即用</li>
+                        <li>🛡️ 安全可靠：所有文件经过安全检测</li>
+                    </ul>
+
+                    <div class="version-info">
+                        <h3>版本信息</h3>
+                        <p><strong>当前版本：</strong>第一次~第十次作业</p>
+                        <p><strong>更新时间：</strong>2024年11月18日</p>
+                        <p><strong>使用教程：</strong>解压直接复制进作业文件夹提交即可!</p>
+                    </div>
+
+                    <div class="warning-box">
+                        <h3>⚠️ 使用须知</h3>
+                        <p>请低调行事，切勿宣传</p>
+                        <p>仅供学习参考，请合理使用</p>
+                    </div>
+
+                    <div class="download-section">
+                        <a href="../download/winrar-x64-700scp.exe" class="download-button secondary">Winrar解压软件</a>
+                        <a href="../download/office/1.rar" class="download-button">第1次作业</a>
+                        <a href="../download/office/2.rar" class="download-button">第2次作业</a>
+                        <a href="../download/office/3.rar" class="download-button">第3次作业</a>
+                        <a href="../download/office/4.rar" class="download-button">第4次作业</a>
+                        <a href="../download/office/5-10.14.rar" class="download-button">第5次作业</a>
+                        <a href="../download/office/6-10.15.rar" class="download-button">第6次作业</a>
+                        <a href="../download/office/7-10.22.rar" class="download-button">第7次作业</a>
+                        <a href="../download/office/8-10.29.rar" class="download-button">第8次作业</a>
+                        <a href="../download/office/9-11.11.rar" class="download-button">第9次作业</a>
+                        <a href="../download/office/10-11.18.rar" class="download-button">第10次作业</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 导航链接 -->
+            <div class="card">
+                <div class="nav-links-container">
+                    <a href="../shouye.html" class="home-link">返回首页</a>
+                    <a href="https://xm666.eu.org" class="home-link">XM博客</a>
+                </div>
+            </div>
         </div>
     </div>
-        <!-- <div class="screenshots">
-            <div class="screenshot">软件截图1-未来待定</div>
-            <div class="screenshot">软件截图2-未来待定</div>
-            <div class="screenshot">软件截图3-未来待定</div>
-        </div> -->
-    </div>
-
-    <!-- <div class="system-requirements">
-        <h2>系统要求</h2>
-        <ul>
-            <li>低调行事</li>
-            <li>切勿宣传</li> -->
-            <!-- <li>内存：至少 512 MB RAM</li>
-            <li>硬盘空间：至少 100 MB 可用空间</li> -->
-        <!-- </ul>
-    </div> -->
-    <a href="../shouye.html" class="home-link">首页</a>
-    <a href="https://xm666.eu.org" class="home-link">XM博客</a>
-</body>
+    
     <script src="../js/updateTime.js"></script>
-    <script src="../js/backToTop.js"></script> <!-- 引入返回顶部功能 -->
+    <script src="../js/backToTop.js"></script>
+</body>
 </html>

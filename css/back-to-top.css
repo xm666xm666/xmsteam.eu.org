@@ -1,34 +1,53 @@
-  #back-to-top {
-    position: fixed;
-    bottom: 20px; /* 距离底部20px */
-    right: 20px; /* 距离右侧20px */
-    display: none; /* 初始隐藏 */
-    z-index: 1000; /* 确保在其他元素上面 */
-    background-color: #4CAF50; /* 按钮背景颜色 */
-    color: white; /* 按钮文字颜色 */
-    padding: 10px; /* 按钮内边距 */
-    border: none; /* 无边框 */
-    border-radius: 5px; /* 圆角 */
-    cursor: pointer; /* 鼠标悬停时变为手型 */
-    transition: opacity 0.3s ease, transform 0.3s ease; /* 添加过渡 */
-  }
-  
+/* 企业级返回顶部按钮 */
+#back-to-top,
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: block;
+  z-index: 1000;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
 
+#back-to-top:hover,
+.back-to-top:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+#back-to-top:active,
+.back-to-top:active {
+  transform: translateY(-1px);
+}
+
+/* 添加图标效果 */
+#back-to-top::before,
+.back-to-top::before {
+  content: '↑';
+  margin-right: 8px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  #back-to-top,
   .back-to-top {
-    position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
-    font-size: 16px;
-    cursor: pointer;
-    display: none; /* 初始隐藏 */
-    transition: opacity 0.3s ease, transform 0.3s ease; /* 添加过渡 */
+    padding: 12px 16px;
+    font-size: 14px;
   }
-  
-  .back-to-top:hover {
-    background-color: #0056b3;
-  }
+}
