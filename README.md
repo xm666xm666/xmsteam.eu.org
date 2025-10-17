@@ -8,4 +8,6 @@ XM插件网
 
 新版页面(2025.10.17)-大版本更新！使用全新UI界面！
 
+![readme2](./picture/readme2.png)
+
 # xm666.eu.org

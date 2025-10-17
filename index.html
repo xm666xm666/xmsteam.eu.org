@@ -4,68 +4,256 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>确认跳转页面</title>
+  <title>XM企业级插件网 - 免责声明</title>
   <link rel="shortcut icon" href="ico/cat.ico">
   <link rel="stylesheet" href="./css/system-time.css">
   <link rel="stylesheet" href="./css/home-link.css">
   <link rel="stylesheet" href="./css/body.css">
-  <link rel="stylesheet" href="./css/back-to-top.css"> <!-- 引入back-to-top.css -->
+  <link rel="stylesheet" href="./css/back-to-top.css">
   <style>
-    h1 {
-      font-size: 2rem;
+    /* 企业级免责声明页面样式 */
+    .disclaimer-hero {
       text-align: center;
+      padding: 80px 0;
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+      border-radius: 20px;
+      margin: 40px 0;
+    }
+    
+    .disclaimer-hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
       margin-bottom: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .disclaimer-hero p {
+      font-size: 1.2rem;
+      color: #2c3e50;
+      max-width: 600px;
+      margin: 0 auto 30px auto;
+      font-weight: 500;
+    }
+
+    .disclaimer-container {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 50px 40px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      margin: 50px 0;
+      border: 2px solid rgba(102, 126, 234, 0.1);
+      position: relative;
+      overflow: hidden;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .disclaimer-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .disclaimer-content {
+      line-height: 1.8;
+      color: #2c3e50;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    .disclaimer-content p {
+      margin-bottom: 20px;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+    }
+
+    .disclaimer-content p:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .disclaimer-content strong {
+      color: #667eea;
+      font-weight: 700;
+    }
+
+    .confirm-section {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 40px;
+      margin: 50px 0;
+      text-align: center;
+      border: 2px solid rgba(102, 126, 234, 0.1);
     }
 
     .confirm-button {
-      padding: 10px 20px;
-      background-color: #333;
-      color: #fff;
+      padding: 18px 40px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
       border: none;
-      border-radius: 4px;
-      font-size: 1.5rem;
+      border-radius: 50px;
       cursor: pointer;
+      font-size: 1.2rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+      margin: 20px 0;
+      display: inline-block;
+      text-decoration: none;
     }
 
     .confirm-button:hover {
-      background-color: #555;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+      background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
     }
 
-    p {
-      line-height: 1.6;
+    .confirm-button:active {
+      transform: translateY(-1px);
+    }
+
+    .warning-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .features-section {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 40px;
+      margin: 50px 0;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .feature-item {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .feature-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #2c3e50;
       margin-bottom: 10px;
     }
 
-    .disclaimer-box {
-      background-color: #f8ccc8;
-      border-radius: 4px;
-      padding: 20px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    .feature-description {
+      color: #2c3e50;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      font-weight: 500;
     }
 
-    .disclaimer-box p:last-child {
-      margin-bottom: 0;
+    @media (max-width: 768px) {
+      .disclaimer-container {
+        margin: 20px;
+        padding: 30px 20px;
+      }
+      
+      .disclaimer-hero h1 {
+        font-size: 2.2rem;
+      }
     }
   </style>
 </head>
 
 <body>
-  <button id="back-to-top" class="back-to-top">返回顶部</button>
-  <div id="system-time"></div>
-  <div class="disclaimer-box">
-    <h1>免责声明</h1>
-    <p>在使用本网站（https://www.xmsteam.eu.org或https://xmsteam.eu.org）之前，请仔细阅读以下免责声明：</p>
-    <p>本网站的内容仅供参考和个人使用，不构成任何形式的法律、金融、医疗或其他专业建议。您应当在采取行动之前，咨询相关专业人士以获得适当的建议。</p>
-    <p>本网站力求提供准确、全面和最新的信息，但无法保证信息的准确性和完整性。对于因使用本网站而导致的任何损失或损害，本网站概不负责。</p>
-    <p>本网站可能包含指向其他网站的链接，但并不意味着我们对这些网站的内容或准确性进行认可或负责。您在访问这些链接时应自行承担风险。</p>
-    <p>我们保留随时更改免责声明的权利，恕不另行通知。您应定期查看本页面以了解任何更改。</p>
-    <p>如有任何疑问或需要进一步信息，请联系我们。</p>
-    <p>使用该网站任何页面均同意该声明。</p>
-    <p>再次感谢您使用本网站。</p>
-    <p>致谢！</p>
+  <div class="main-container">
+    <button id="back-to-top" class="back-to-top">返回顶部</button>
+    <div class="content-area">
+      <!-- 英雄区域 -->
+      <div class="disclaimer-hero">
+        <h1>免责声明</h1>
+        <p>在使用本网站之前，请仔细阅读以下重要声明</p>
+        <div id="system-time"></div>
+      </div>
+
+      <!-- 免责声明内容 -->
+      <div class="disclaimer-container">
+        <div class="disclaimer-content">
+          <p><strong>重要提示：</strong>在使用本网站（https://www.xmsteam.eu.org或https://xmsteam.eu.org）之前，请仔细阅读以下免责声明：</p>
+          
+          <p><strong>内容仅供参考：</strong>本网站的内容仅供参考和个人使用，不构成任何形式的法律、金融、医疗或其他专业建议。您应当在采取行动之前，咨询相关专业人士以获得适当的建议。</p>
+          
+          <p><strong>信息准确性：</strong>本网站力求提供准确、全面和最新的信息，但无法保证信息的准确性和完整性。对于因使用本网站而导致的任何损失或损害，本网站概不负责。</p>
+          
+          <p><strong>外部链接：</strong>本网站可能包含指向其他网站的链接，但并不意味着我们对这些网站的内容或准确性进行认可或负责。您在访问这些链接时应自行承担风险。</p>
+          
+          <p><strong>声明变更：</strong>我们保留随时更改免责声明的权利，恕不另行通知。您应定期查看本页面以了解任何更改。</p>
+          
+          <p><strong>联系方式：</strong>如有任何疑问或需要进一步信息，请联系我们。</p>
+          
+          <p><strong>使用同意：</strong>使用该网站任何页面均同意该声明。</p>
+          
+          <p><strong>感谢使用：</strong>再次感谢您使用本网站。致谢！</p>
+        </div>
+      </div>
+      
+      <!-- 确认区域 -->
+      <div class="confirm-section">
+        <span class="warning-icon">⚠️</span>
+        <h2>确认跳转</h2>
+        <p>请确认您已阅读并同意上述免责声明</p>
+        <button class="confirm-button" onclick="redirectToIndex()">确认跳转到首页</button>
+      </div>
+      
+      <!-- 功能特色 -->
+      <div class="features-section">
+        <h2>网站特色</h2>
+        <div class="features-grid">
+          <div class="feature-item">
+            <span class="feature-icon">🔒</span>
+            <h3 class="feature-title">安全可靠</h3>
+            <p class="feature-description">提供安全可靠的在线服务，保护用户隐私</p>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">⚡</span>
+            <h3 class="feature-title">高效便捷</h3>
+            <p class="feature-description">快速响应的工具和服务，提升工作效率</p>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">🎯</span>
+            <h3 class="feature-title">专业精准</h3>
+            <p class="feature-description">企业级工具和资源，满足专业需求</p>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">📚</span>
+            <h3 class="feature-title">学习资源</h3>
+            <p class="feature-description">丰富的学习资料，助力技能提升</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 导航链接 -->
+      <div class="card">
+        <div class="nav-links-container">
+          <a href="./shouye.html" class="home-link">返回首页</a>
+          <a href="https://xm666.eu.org" class="home-link">XM博客</a>
+        </div>
+      </div>
+    </div>
   </div>
-  <div id="system-time"></div>
-  <button style="text-align: center;" class="confirm-button" onclick="redirectToIndex()">确认跳转</button>
 
   <script>
     function redirectToIndex() {
@@ -75,8 +263,9 @@
       }
     }
   </script>
+  
   <script src="./js/updateTime.js"></script>
-  <script src="./js/backToTop.js"></script> <!-- 引入返回顶部功能 -->
+  <script src="./js/backToTop.js"></script>
 </body>
 
 </html>
